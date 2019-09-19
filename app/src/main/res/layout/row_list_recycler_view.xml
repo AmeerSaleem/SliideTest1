@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/curved_layout"
+        android:elevation="5dp"
+        android:orientation="horizontal">
+
+        <com.joooonho.SelectableRoundedImageView
+            android:id="@+id/list_image_1"
+            android:layout_width="70dp"
+            android:src="@mipmap/ic_launcher"
+            app:sriv_left_top_corner_radius="10dp"
+            app:sriv_left_bottom_corner_radius="10dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+
+            />
+
+        <TextView
+            android:id="@+id/itemText1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="top"
+            android:fontFamily="@font/noirpro_light"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="15dp"
+            android:text="Text goes here"
+            android:textColor="#a3a3a3"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/curved_layout"
+        android:elevation="5dp"
+        android:orientation="horizontal">
+
+        <com.joooonho.SelectableRoundedImageView
+            android:id="@+id/list_image_2"
+            android:layout_width="70dp"
+            android:src="@mipmap/ic_launcher"
+            app:sriv_left_top_corner_radius="10dp"
+            app:sriv_left_bottom_corner_radius="10dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+
+            />
+
+        <TextView
+            android:id="@+id/itemText2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="15dp"
+            android:fontFamily="@font/noirpro_light"
+            android:layout_marginTop="10dp"
+            android:gravity="top"
+            android:text="Text goes here"
+            android:textColor="#a3a3a3"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/curved_layout"
+        android:elevation="5dp"
+        android:layout_margin="5dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.joooonho.SelectableRoundedImageView
+            android:id="@+id/list_image_3"
+            android:layout_width="70dp"
+            android:src="@mipmap/ic_launcher"
+            app:sriv_left_top_corner_radius="10dp"
+            app:sriv_left_bottom_corner_radius="10dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+
+            />
+
+        <TextView
+            android:id="@+id/itemText3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/noirpro_light"
+            android:gravity="top"
+            android:text="Text goes here"
+            android:textColor="#a3a3a3"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpagerId"
+            android:layout_width="wrap_content"
+            android:layout_height="240dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp" />
+    </LinearLayout>
+
+</LinearLayout>
