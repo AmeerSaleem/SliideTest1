@@ -15,7 +15,7 @@ public class ViewpagerFragmentAdapter extends FragmentStatePagerAdapter{
     public ArrayList<Fragment1> fragments;
 
     public ViewpagerFragmentAdapter(FragmentManager fm, ArrayList<Fragment1> fragments) {
-        super(fm);
+        super(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
 
         this.fragments = fragments;
     }
@@ -35,6 +35,8 @@ public class ViewpagerFragmentAdapter extends FragmentStatePagerAdapter{
         return null; //does not happen
 //        return this.fragments.get(i);
     }
+
+
 
     @Override
     public int getCount() {

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -33,6 +35,7 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
+import com.example.sliidetest1.Fragments.ViewPagerParentFragment;
 import com.example.sliidetest1.MainActivity;
 import com.example.sliidetest1.ModelClasses.RowModel;
 import com.example.sliidetest1.R;
@@ -77,6 +80,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ImageView imageScreen1, imageScreen2, imageScreen3;
         TextView text1, text2, text3;
         ViewPager viewPager;
+        FrameLayout fragmentFrame;
 
         public ViewHolder(View itemView) {
 
@@ -88,7 +92,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             text2 = itemView.findViewById(R.id.itemText2);
             text3 = itemView.findViewById(R.id.itemText3);
             viewPager = itemView.findViewById(R.id.viewpagerId);
-            viewPager.setOffscreenPageLimit(3);
+//            viewPager.setOffscreenPageLimit(3);
+            fragmentFrame = itemView.findViewById(R.id.fragment_container);
 //            this.viewPager.setId(Id++);
 //            viewPager.setAdapter(MainActivity.vpAdapter);
 
@@ -100,7 +105,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.row_list_recycler_view, parent, false);
         ViewHolder holder = new ViewHolder(v);
-        vpAdapter = new ViewpagerFragmentAdapter(((AppCompatActivity) context).getSupportFragmentManager(),fragments4ViewPager);
+//        vpAdapter = new ViewpagerFragmentAdapter(((AppCompatActivity) context).getSupportFragmentManager(),fragments4ViewPager);
 //        vpAdapter = new ViewpagerFragmentAdapter(,fragments4ViewPager);
         return holder;
     }
@@ -130,23 +135,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Fragment1 frag1 = new Fragment1(row.getItemList().get(3).getText(), row.getItemList().get(3).getImageUrl());
         Fragment1 frag2 = new Fragment1(row.getItemList().get(4).getText(), row.getItemList().get(4).getImageUrl());
         Fragment1 frag3 = new Fragment1(row.getItemList().get(5).getText(), row.getItemList().get(5).getImageUrl());
-
         ArrayList<Fragment1> fragments4ViewPager = new ArrayList<>();
-
-        if (frag1.equals(null)) {
-            Toast.makeText(context, "frag1 is null", Toast.LENGTH_LONG).show();
-            Log.e("Tag", "Frag1 is equal to null");
-        }
 
         fragments4ViewPager.add(frag1);
         fragments4ViewPager.add(frag2);
         fragments4ViewPager.add(frag3);
 //        final Activity activity = (Activity) context;
 
-        holder.viewPager.setSaveFromParentEnabled(false);
+        ViewPagerParentFragment vpFragment = new ViewPagerParentFragment(fragments4ViewPager);
+        FragmentTransaction ft = ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container,vpFragment).commit();
+
+//        ViewPagerParentFragment.vpAdapterTrial.notifyDataSetChanged();
+        holder.viewPager.setSaveFromParentEnabled(true);
         holder.viewPager.setOffscreenPageLimit(2);
-        holder.viewPager.setId((position) + 1);
-//        vpAdapter = new ViewpagerFragmentAdapter(((AppCompatActivity) context).getSupportFragmentManager(), fragments4ViewPager);
+        holder.viewPager.setId((position + 1));
+        vpAdapter = new ViewpagerFragmentAdapter(((AppCompatActivity) context).getSupportFragmentManager(), fragments4ViewPager);
 //        vpAdapter = new ViewpagerFragmentAdapter(frag1.getChildFragmentManager(), fragments4ViewPager);
         vpAdapter.fragments = fragments4ViewPager;
         vpAdapter.notifyDataSetChanged();
