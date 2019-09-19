@@ -31,10 +31,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    public static ViewpagerFragmentAdapter vpAdapter;
-    public static ArrayList<Fragment1> fragments4ViewPager;
-
     private static final String JsonUrl =
             "https://contentapi.celltick.com/mediaApi/v1.0/content?key=t4QCg6zCkFrCW5CTJii52IAQojqNmyeJ&publisherId=Magazine_from_AppDevWebsite&userId=eccc7785-001c-4341-88f8-eddf15f3aa4a&countryCode=US&language=en&limit=100&offset=0";
     RecyclerView rcvItems;
@@ -67,16 +63,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        fragments4ViewPager = new ArrayList<>();
-//        Fragment1 frag1 = new Fragment1();
-//        Fragment1 frag2 = new Fragment1();
-//        Fragment1 frag3 = new Fragment1();
-
-//        fragments4ViewPager.add(frag1);
-//        fragments4ViewPager.add(frag2);
-//        fragments4ViewPager.add(frag3);
-
-        vpAdapter = new ViewpagerFragmentAdapter(getSupportFragmentManager(), fragments4ViewPager);
 
         rowList = new ArrayList<>();
         textTrial = findViewById(R.id.textTrial);

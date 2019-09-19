@@ -1,42 +1,18 @@
 package com.example.sliidetest1.Adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.os.Bundle;
-import android.text.Layout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.ViewCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
-import com.example.sliidetest1.Fragments.ViewPagerParentFragment;
-import com.example.sliidetest1.MainActivity;
 import com.example.sliidetest1.ModelClasses.RowModel;
 import com.example.sliidetest1.R;
 import com.example.sliidetest1.ViewPagerFragments.Fragment1;
@@ -62,16 +38,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         fragTest2 = new Fragment1();
         fragTest3 = new Fragment1();
         fragments4ViewPager = new ArrayList<>();
-//        fragments4ViewPager = new ArrayList<>();
-//        Fragment1 frag1 = new Fragment1();
-//        Fragment1 frag2 = new Fragment1();
-//        Fragment1 frag3 = new Fragment1();
-//
-//        fragments4ViewPager.add(frag1);
-//        fragments4ViewPager.add(frag2);
-//        fragments4ViewPager.add(frag3);
-//
-//        vpAdapter = new ViewpagerFragmentAdapter(fragments4ViewPager.get(0).getChildFragmentManager(), fragments4ViewPager);
 
     }
 
@@ -80,7 +46,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ImageView imageScreen1, imageScreen2, imageScreen3;
         TextView text1, text2, text3;
         ViewPager viewPager;
-        FrameLayout fragmentFrame;
 
         public ViewHolder(View itemView) {
 
@@ -92,10 +57,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             text2 = itemView.findViewById(R.id.itemText2);
             text3 = itemView.findViewById(R.id.itemText3);
             viewPager = itemView.findViewById(R.id.viewpagerId);
-//            viewPager.setOffscreenPageLimit(3);
-            fragmentFrame = itemView.findViewById(R.id.fragment_container);
-//            this.viewPager.setId(Id++);
-//            viewPager.setAdapter(MainActivity.vpAdapter);
 
         }
     }
@@ -105,15 +66,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.row_list_recycler_view, parent, false);
         ViewHolder holder = new ViewHolder(v);
-//        vpAdapter = new ViewpagerFragmentAdapter(((AppCompatActivity) context).getSupportFragmentManager(),fragments4ViewPager);
-//        vpAdapter = new ViewpagerFragmentAdapter(,fragments4ViewPager);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         RowModel row = rowList.get(position);
-//        Toast.makeText(context, "position: " + position, Toast.LENGTH_SHORT).show();
         holder.text1.setText(row.getItemList().get(0).getText());
         Glide
                 .with(context)
@@ -140,23 +98,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         fragments4ViewPager.add(frag1);
         fragments4ViewPager.add(frag2);
         fragments4ViewPager.add(frag3);
-//        final Activity activity = (Activity) context;
 
-        ViewPagerParentFragment vpFragment = new ViewPagerParentFragment(fragments4ViewPager);
-        FragmentTransaction ft = ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_container,vpFragment).commit();
-
-//        ViewPagerParentFragment.vpAdapterTrial.notifyDataSetChanged();
-        holder.viewPager.setSaveFromParentEnabled(true);
         holder.viewPager.setOffscreenPageLimit(2);
         holder.viewPager.setId((position + 1));
         vpAdapter = new ViewpagerFragmentAdapter(((AppCompatActivity) context).getSupportFragmentManager(), fragments4ViewPager);
-//        vpAdapter = new ViewpagerFragmentAdapter(frag1.getChildFragmentManager(), fragments4ViewPager);
         vpAdapter.fragments = fragments4ViewPager;
         vpAdapter.notifyDataSetChanged();
 
         holder.viewPager.setAdapter(vpAdapter);
-//        holder.viewPager.setAdapter(MainActivity.vpAdapter);
     }
 
     @Override

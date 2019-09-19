@@ -130,12 +130,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp" />
 
-        <FrameLayout
-            android:id="@+id/fragment_container"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="240dp"
-            />
+
 
 
     </LinearLayout>

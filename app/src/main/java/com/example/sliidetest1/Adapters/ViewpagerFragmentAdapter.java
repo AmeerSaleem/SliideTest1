@@ -33,7 +33,6 @@ public class ViewpagerFragmentAdapter extends FragmentStatePagerAdapter{
                 return fragments.get(2); //ChildFragment3 at position 2
         }
         return null; //does not happen
-//        return this.fragments.get(i);
     }
 
 
